@@ -10,7 +10,7 @@ namespace CapaDatos
 {
     public class DalProductos
     {
-        public static List<ProductosVO> GetLstProductos(bool? Disponibilidad)
+        public static List<ProductosVO> GetListaProductos(bool? Disponibilidad)
         {
             string Query = "ObtenerTodosProductos";
             DataSet dsProductos = new DataSet();
