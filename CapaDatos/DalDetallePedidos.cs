@@ -8,7 +8,7 @@ using VO;
 
 namespace CapaDatos
 {
-    class DalDetallePedidos
+    public class DalDetallePedidos
     {
         public static List<DetallePedidosVO> GetListaPedidos()
         {

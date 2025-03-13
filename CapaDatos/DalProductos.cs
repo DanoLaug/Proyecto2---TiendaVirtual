@@ -8,7 +8,7 @@ using VO;
 
 namespace CapaDatos
 {
-    class DalProductos
+    public class DalProductos
     {
         public static List<ProductosVO> GetLstProductos(bool? Disponibilidad)
         {
