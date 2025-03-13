@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VO
 {
-    class DetallePedidosVO
+    public class DetallePedidosVO
     {
         private int _PedidoId;
         private string _ProductoId;

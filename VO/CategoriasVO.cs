@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VO
 {
-    class CategoriasVO
+    public class CategoriasVO
     {
         private int _Id;
         private string _Nombre;

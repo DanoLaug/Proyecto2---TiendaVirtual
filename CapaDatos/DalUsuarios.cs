@@ -10,6 +10,27 @@ namespace CapaDatos
 {
     public class DalUsuarios
     {
+        public static List<UsuariosVO> GetListaUsuarios()
+        {
+            try
+            {
+                DataSet dsUsuarios = MetodoDatos.ExecuteDataSet("ObtenerTodosUsuarios");
+                List<UsuariosVO> listaUsuarios = new List<UsuariosVO>();
+
+                foreach (DataRow dr in dsUsuarios.Tables[0].Rows)
+                {
+                    listaUsuarios.Add(new UsuariosVO(dr));
+                }
+                return listaUsuarios;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         // Insertar usuario
         public static void InsertarUsuario(string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, DateTime paramFechaNacimiento, string paramUrlFoto)
         {
@@ -34,7 +55,7 @@ namespace CapaDatos
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("ActualizarUsuarios",
+                MetodoDatos.ExecuteNonQuery("ActualizarUsuario",
                     "@Id", paramIdUsuario,
                     "@Nombre", paramNombre,
                     "@Correo", paramCorreo,
