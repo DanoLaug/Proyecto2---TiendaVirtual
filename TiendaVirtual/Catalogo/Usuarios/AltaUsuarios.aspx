@@ -79,17 +79,6 @@
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <asp:Label ID="lblFechaNacimiento" runat="server" Text="Fecha de Nacimiento"></asp:Label>
-                    <asp:TextBox ID="txtFechaNacimiento" runat="server" placeholder="dd/mm/yyyy"
-                        CssClass="form-control"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvFechaNacimiento" ControlToValidate="txtFechaNacimiento"
-                        CssClass="text-danger" runat="server"
-                        ErrorMessage="La fecha de nacimiento es requerida"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="form-group">
                     <asp:Label ID="lblSubirImagen" runat="server" Text="Seleccionar Foto"></asp:Label>
                     <div class="row">
                         <div class="col-md-3">
