@@ -45,12 +45,12 @@ namespace CapaDatos
         }
 
         // Actualizar Categorias
-        public static void ActualizarCategoria(int paramIdCategoria, string paramNombre)
+        public static void ActualizarCategoria(int paramCategoriaId, string paramNombre)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarCategoria",
-                    "@Id", paramIdCategoria,
+                    "@Id", paramCategoriaId,
                     "@Nombre", paramNombre);
             }
             catch (Exception ex)
@@ -60,11 +60,11 @@ namespace CapaDatos
         }
 
         // Eliminar Categorias
-        public static void EliminarCategoria(int paramIdCategoria)
+        public static void EliminarCategoria(int paramCategoriaId)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarCategoria", "@Id", paramIdCategoria);
+                MetodoDatos.ExecuteNonQuery("EliminarCategoria", "@Id", paramCategoriaId);
             }
             catch (Exception ex)
             {
@@ -73,11 +73,11 @@ namespace CapaDatos
         }
 
         // Obtener Categoria por ID
-        public static CategoriasVO GetCategoriaById(int paramIdCategoria)
+        public static CategoriasVO GetCategoriaById(int paramCategoriaId)
         {
             try
             {
-                DataSet dsUsuario = MetodoDatos.ExecuteDataSet("ObtenerCategoriaPorId", "@Id", paramIdCategoria);
+                DataSet dsUsuario = MetodoDatos.ExecuteDataSet("ObtenerCategoriaPorId", "@Id", paramCategoriaId);
                 if (dsUsuario.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsUsuario.Tables[0].Rows[0];

@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TiendaVirtual.Catalogo
+namespace TiendaVirtual.Catalogo.Usuarios
 {
-	public partial class ubicacion : System.Web.UI.Page
+	public partial class Ubicacion : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

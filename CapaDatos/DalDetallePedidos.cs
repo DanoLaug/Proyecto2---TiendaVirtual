@@ -49,12 +49,12 @@ namespace CapaDatos
         }
 
         // Actualizar DetallePedido
-        public static void ActualizarDetallePedido(int paramIdDetallePedidos, string paramPedidoId, string paramProductoId, decimal paramCantidad, int paramPrecioUnitario)
+        public static void ActualizarDetallePedido(int paramDetallePedidoIds, string paramPedidoId, string paramProductoId, decimal paramCantidad, int paramPrecioUnitario)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarDetallePedido",
-                    "@Id", paramIdDetallePedidos,
+                    "@Id", paramDetallePedidoIds,
                     "@PedidoId", paramPedidoId,
                     "@ProductoId", paramProductoId,
                     "@Cantidad", paramCantidad,
@@ -67,11 +67,11 @@ namespace CapaDatos
         }
 
         // Eliminar DetallePedido
-        public static void EliminarDetallePedido(int paramIdDetallePedidos)
+        public static void EliminarDetallePedido(int paramDetallePedidoIds)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarDetallePedido", "@Id", paramIdDetallePedidos);
+                MetodoDatos.ExecuteNonQuery("EliminarDetallePedido", "@Id", paramDetallePedidoIds);
             }
             catch (Exception ex)
             {
@@ -80,11 +80,11 @@ namespace CapaDatos
         }
 
         // Obtener DetallePedido por ID
-        public static DetallePedidosVO GetDetallePedidoById(int paramIdDetallePedidos)
+        public static DetallePedidosVO GetDetallePedidoById(int paramDetallePedidoIds)
         {
             try
             {
-                DataSet dsDetallePedido = MetodoDatos.ExecuteDataSet("ObtenerDetallePedidoPorId", "@Id", paramIdDetallePedidos);
+                DataSet dsDetallePedido = MetodoDatos.ExecuteDataSet("ObtenerDetallePedidoPorId", "@Id", paramDetallePedidoIds);
                 if (dsDetallePedido.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsDetallePedido.Tables[0].Rows[0];

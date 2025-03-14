@@ -19,6 +19,7 @@
             <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
             <link href="/Content/sweetalert.css" rel="stylesheet"/>
             <script src="/Scripts/sweetalert.min.js"></script>
+
             <link rel="stylesheet" href="css/styles.css" type="text/css"/>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -48,9 +49,9 @@
                             <li><a href="Inicio.aspx" class="active">Inicio</a></li>
                             <li><a href="Catalogo/Productos/ListarProductos.aspx">Productos</a></li>
                             <li><a href="Catalogo/Medios.aspx">Medios Audiovisuales</a></li>
-                            <li><a href="Contacto.aspx">Contacto</a></li>
+                            <li><a href="Catalogo/Contacto.aspx">Contacto</a></li>
                             <li><a href="Catalogo/Usuarios/ListarUsuarios.aspx">Registro</a></li>
-                            <li><a href="Ubicacion.aspx">Ubicación</a></li>
+                            <li><a href="Catalogo/Ubicacion.aspx">Ubicación</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -73,10 +74,11 @@
                                 <h4>Enlaces</h4>
                                 <ul>
                                     <li><a href="Inicio.aspx" class="active">Inicio</a></li>
-                                    <li><a href="Productos.aspx">Productos</a></li>
-                                    <li><a href="Modelos.aspx">Medios Audiovisuales</a></li>
-                                    <li><a href="Contacto.aspx">Contacto</a></li>
-                                    <li><a href="ubicacion.aspx">Ubicación</a></li>
+                                    <li><a href="Catalogo/Productos/ListarProductos.aspx">Productos</a></li>
+                                    <li><a href="Catalogo/Medios.aspx">Medios Audiovisuales</a></li>
+                                    <li><a href="Catalogo/Contacto.aspx">Contacto</a></li>
+                                    <li><a href="Catalogo/Usuarios/ListarUsuarios.aspx">Registro</a></li>
+                                    <li><a href="Catalogo/Ubicacion.aspx">Ubicación</a></li>
                                 </ul>
                             </div>
                             <div class="footer-section">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contacto.aspx.cs" Inherits="TiendaVirtual.Catalogo.Contacto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contacto.aspx.cs" Inherits="TiendaVirtual.Catalogo.Contacto1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
 </asp:Content>
 
@@ -25,7 +25,7 @@
         <div class="container">
             <div class="contact-form">
                 <h3>Formulario de Contacto</h3>
-                <form id="formContacto" runat="server">
+                <div id="formContacto">
                     <div class="form-group">
                         <label for="txtNombre">Nombre:</label>
                         <asp:TextBox ID="txtNombre" runat="server" placeholder="Ingrese su nombre" required></asp:TextBox>
@@ -37,7 +37,6 @@
                     <div class="form-group">
                         <label for="txtTelefono">Teléfono:</label>
                         <asp:TextBox ID="txtTelefono" runat="server" placeholder="Ingrese su teléfono" type="tel" pattern="\d{10}" required></asp:TextBox>
-                        <small>Formato válido: 10 dígitos</small>
                     </div>
                     <div class="form-group">
                         <label for="txtMensaje">Mensaje:</label>
@@ -48,7 +47,7 @@
                         <button id="enviar-formulario" type="submit" class="btn btn-primary" onclick="alertaEnvio()">Enviar Mensaje</button>
                         
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </section>

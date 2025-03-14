@@ -11,17 +11,8 @@ namespace TiendaVirtual.Catalogo
 {
 
 
-    public partial class Contacto
+    public partial class Contacto1
     {
-
-        /// <summary>
-        /// Control formContacto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formContacto;
 
         /// <summary>
         /// Control txtNombre.

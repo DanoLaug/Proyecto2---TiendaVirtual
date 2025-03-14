@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CapaDatos;
 using VO;
 
+
 namespace CapaNegocios
 {
     public class BllUsuarios
@@ -17,11 +18,11 @@ namespace CapaNegocios
         }
 
         //Insertar
-        public static void InsertarUsuario(string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, DateTime paramFechaNacimiento, string paramUrlFoto)
+        public static void InsertarUsuario(string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, string paramUrlFoto)
         {
             try
             {
-                DalUsuarios.InsertarUsuario(paramNombre, paramCorreo, paramTelefono, paramDireccion, paramFechaNacimiento, paramUrlFoto);
+                DalUsuarios.InsertarUsuario(paramNombre, paramCorreo, paramTelefono, paramDireccion, paramUrlFoto);
             }
             catch (Exception ex)
             {
@@ -30,20 +31,20 @@ namespace CapaNegocios
         }
 
         //Actualizar 
-        public static void ActualizarUsuario(int paramIdUsuario, string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, DateTime paramFechaNacimiento, string paramUrlFoto)
+        public static void ActualizarUsuario(int paramUsuarioId, string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, string paramUrlFoto)
         {
-            DalUsuarios.ActualizarUsuario(paramIdUsuario, paramNombre, paramCorreo, paramTelefono, paramDireccion, paramFechaNacimiento, paramUrlFoto);
+            DalUsuarios.ActualizarUsuario(paramUsuarioId, paramNombre, paramCorreo, paramTelefono, paramDireccion, paramUrlFoto);
         }
 
         //Elminar
-        public static string EliminarUsuario(int paramIdUsuario)
+        public static string EliminarUsuario(int paramUsuarioId)
         {
             try
             {
-                UsuariosVO usuario = DalUsuarios.GetUsuarioById(paramIdUsuario);
+                UsuariosVO usuario = DalUsuarios.GetUsuarioById(paramUsuarioId);
                 if (usuario != null && usuario.Id > 0)  // Verifica si existe antes de eliminar
                 {
-                    DalUsuarios.EliminarUsuario(paramIdUsuario);
+                    DalUsuarios.EliminarUsuario(paramUsuarioId);
                     return "1";  // Eliminación exitosa
                 }
                 else
@@ -58,9 +59,9 @@ namespace CapaNegocios
         }
 
         // Obtener por ID
-        public static UsuariosVO GetUsuarioById(int paramIdUsuario)
+        public static UsuariosVO GetUsuarioById(int paramUsuarioId)
         {
-            return DalUsuarios.GetUsuarioById(paramIdUsuario);
+            return DalUsuarios.GetUsuarioById(paramUsuarioId);
         }
     }
 }

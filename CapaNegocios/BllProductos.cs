@@ -39,20 +39,20 @@ namespace CapaNegocios
         }
 
         //Actualizar 
-        public static void ActualizarProducto(int paramIdProductos, string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto, int paramCategoriaId)
+        public static void ActualizarProducto(int paramProductoIds, string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto, int paramCategoriaId)
         {
-            DalProductos.ActualizarProducto(paramIdProductos, paramNombre, paramDescripcion, paramPrecio, paramUrlFoto, paramCategoriaId);
+            DalProductos.ActualizarProducto(paramProductoIds, paramNombre, paramDescripcion, paramPrecio, paramUrlFoto, paramCategoriaId);
         }
 
         //Elminar
-        public static string EliminarProducto(int paramIdProducto)
+        public static string EliminarProducto(int paramProductoId)
         {
             try
             {
-                ProductosVO Producto = DalProductos.GetProductoById(paramIdProducto);
+                ProductosVO Producto = DalProductos.GetProductoById(paramProductoId);
                 if (Producto != null && Producto.Id > 0)  // Verifica si existe antes de eliminar
                 {
-                    DalProductos.EliminarProducto(paramIdProducto);
+                    DalProductos.EliminarProducto(paramProductoId);
                     return "1";  // Eliminación exitosa
                 }
                 else
@@ -67,9 +67,9 @@ namespace CapaNegocios
         }
 
         // Obtener por ID
-        public static ProductosVO GetProductoById(int paramIdProducto)
+        public static ProductosVO GetProductoById(int paramProductoId)
         {
-            return DalProductos.GetProductoById(paramIdProducto);
+            return DalProductos.GetProductoById(paramProductoId);
         }
     }
 }

@@ -15,8 +15,6 @@ namespace VO
         private string _Telefono;
         private string _Direccion;
         private string _UrlFoto;
-        private DateTime _FechaNacimiento;
-
 
         public int Id { get => _Id; set => _Id = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
@@ -24,7 +22,6 @@ namespace VO
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Direccion { get => _Direccion; set => _Direccion = value; }
         public string UrlFoto { get => _UrlFoto; set => _UrlFoto = value; }
-        public DateTime FechaNacimiento { get => _FechaNacimiento; set => _FechaNacimiento = value; }
 
         public UsuariosVO()
         {
@@ -34,7 +31,6 @@ namespace VO
             Telefono = string.Empty;
             Direccion = string.Empty;
             UrlFoto = string.Empty;
-            FechaNacimiento = DateTime.Parse("1900-01-01");
         }
 
         public UsuariosVO(DataRow dr)
@@ -45,7 +41,6 @@ namespace VO
             Telefono = dr["Telefono"].ToString();
             Direccion = dr["Direccion"].ToString();
             UrlFoto = dr["UrlFoto"].ToString();
-            FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
         }
     }
 }

@@ -65,12 +65,12 @@ namespace CapaDatos
         }
 
         // Actualizar Productos
-        public static void ActualizarProducto(int paramIdProductos, string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto, int paramCategoriaId)
+        public static void ActualizarProducto(int paramProductoIds, string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto, int paramCategoriaId)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarProducto",
-                    "@Id", paramIdProductos,
+                    "@Id", paramProductoIds,
                     "@Nombre", paramNombre,
                     "@Descripcion", paramDescripcion,
                     "@Precio", paramPrecio,
@@ -84,11 +84,11 @@ namespace CapaDatos
         }
 
         // Eliminar Producto
-        public static void EliminarProducto(int paramIdProducto)
+        public static void EliminarProducto(int paramProductoId)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarProducto", "@Id", paramIdProducto);
+                MetodoDatos.ExecuteNonQuery("EliminarProducto", "@Id", paramProductoId);
             }
             catch (Exception ex)
             {
@@ -97,11 +97,11 @@ namespace CapaDatos
         }
 
         // Obtener Producto por ID
-        public static ProductosVO GetProductoById(int paramIdProducto)
+        public static ProductosVO GetProductoById(int paramProductoId)
         {
             try
             {
-                DataSet dsProducto = MetodoDatos.ExecuteDataSet("ObtenerProductoPorId", "@Id", paramIdProducto);
+                DataSet dsProducto = MetodoDatos.ExecuteDataSet("ObtenerProductoPorId", "@Id", paramProductoId);
                 if (dsProducto.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsProducto.Tables[0].Rows[0];

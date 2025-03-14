@@ -49,12 +49,12 @@ namespace CapaDatos
         }
 
         // Actualizar Pedido
-        public static void ActualizarPedido(int paramIdPedido, string paramUsuarioId, DateTime paramFecha, decimal paramTotal, string paramUrlFoto)
+        public static void ActualizarPedido(int paramPedidoId, string paramUsuarioId, DateTime paramFecha, decimal paramTotal, string paramUrlFoto)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarUsuarios",
-                    "@Id", paramIdPedido,
+                    "@Id", paramPedidoId,
                     "@UsuarioId", paramUsuarioId,
                     "@Fecha", paramFecha,
                     "@Total", paramTotal,
@@ -67,11 +67,11 @@ namespace CapaDatos
         }
 
         // Eliminar Pedido
-        public static void EliminarPedido(int paramIdPedido)
+        public static void EliminarPedido(int paramPedidoId)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarPedido", "@Id", paramIdPedido);
+                MetodoDatos.ExecuteNonQuery("EliminarPedido", "@Id", paramPedidoId);
             }
             catch (Exception ex)
             {
@@ -80,11 +80,11 @@ namespace CapaDatos
         }
 
         // Obtener Pedido por ID
-        public static PedidosVO GetPedidoById(int paramIdPedido)
+        public static PedidosVO GetPedidoById(int paramPedidoId)
         {
             try
             {
-                DataSet dsPedido = MetodoDatos.ExecuteDataSet("ObtenerPedidoPorId", "@Id", paramIdPedido);
+                DataSet dsPedido = MetodoDatos.ExecuteDataSet("ObtenerPedidoPorId", "@Id", paramPedidoId);
                 if (dsPedido.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsPedido.Tables[0].Rows[0];
