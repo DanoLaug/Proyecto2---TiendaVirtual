@@ -18,11 +18,11 @@ namespace CapaNegocios
         }
 
         //Insertar
-        public static void InsertarUsuario(string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, string paramUrlFoto)
+        public static void InsertarUsuario(string Nombre, string Correo, string Telefono, string Direccion, string UrlFoto)
         {
             try
             {
-                DalUsuarios.InsertarUsuario(paramNombre, paramCorreo, paramTelefono, paramDireccion, paramUrlFoto);
+                DalUsuarios.InsertarUsuario(Nombre, Correo, Telefono, Direccion, UrlFoto);
             }
             catch (Exception ex)
             {
@@ -31,20 +31,20 @@ namespace CapaNegocios
         }
 
         //Actualizar 
-        public static void ActualizarUsuario(int paramUsuarioId, string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, string paramUrlFoto)
+        public static void ActualizarUsuario(int UsuarioId, string Nombre, string Correo, string Telefono, string Direccion, string UrlFoto)
         {
-            DalUsuarios.ActualizarUsuario(paramUsuarioId, paramNombre, paramCorreo, paramTelefono, paramDireccion, paramUrlFoto);
+            DalUsuarios.ActualizarUsuario(UsuarioId, Nombre, Correo, Telefono, Direccion, UrlFoto);
         }
 
         //Elminar
-        public static string EliminarUsuario(int paramUsuarioId)
+        public static string EliminarUsuario(int UsuarioId)
         {
             try
             {
-                UsuariosVO usuario = DalUsuarios.GetUsuarioById(paramUsuarioId);
+                UsuariosVO usuario = DalUsuarios.GetUsuarioById(UsuarioId);
                 if (usuario != null && usuario.Id > 0)  // Verifica si existe antes de eliminar
                 {
-                    DalUsuarios.EliminarUsuario(paramUsuarioId);
+                    DalUsuarios.EliminarUsuario(UsuarioId);
                     return "1";  // Eliminación exitosa
                 }
                 else
@@ -59,9 +59,9 @@ namespace CapaNegocios
         }
 
         // Obtener por ID
-        public static UsuariosVO GetUsuarioById(int paramUsuarioId)
+        public static UsuariosVO GetUsuarioById(int UsuarioId)
         {
-            return DalUsuarios.GetUsuarioById(paramUsuarioId);
+            return DalUsuarios.GetUsuarioById(UsuarioId);
         }
     }
 }

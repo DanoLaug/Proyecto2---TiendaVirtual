@@ -55,7 +55,7 @@ namespace TiendaVirtual.Catalogo.Usuarios
                     break;
             }
             //UtilControls.SweetBox(mensaje, sub, clase, this.Page, this.GetType());
-            //RefrescaGrid();
+            RefrescaGrid();
             Response.Write("<script>alert('Fallo')</script>");
         }
 
@@ -78,24 +78,29 @@ namespace TiendaVirtual.Catalogo.Usuarios
 
         protected void GVUsuarios_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            string UsuarioId = GVUsuarios.DataKeys[e.RowIndex].Values["Id"].ToString();
-            string Nombre = e.NewValues["Nombre"].ToString();
-            string Correo = e.NewValues["Correo"].ToString();
-            string Telefono = e.NewValues["Telefono"].ToString();
-            string Direccion = e.NewValues["Direccion"].ToString();
-            string UrlFotos = e.NewValues["UrlFotos"].ToString();
+            try
+            {
+                string UsuarioId = GVUsuarios.DataKeys[e.RowIndex].Values["Id"].ToString();
+                string Nombre = e.NewValues["Nombre"].ToString();
+                string Correo = e.NewValues["Correo"].ToString();
+                string Telefono = e.NewValues["Telefono"].ToString();
+                string Direccion = e.NewValues["Direccion"].ToString();
+                string UrlFoto = e.NewValues["UrlFoto"]?.ToString() ?? "";
 
-            CheckBox ChkAux = (CheckBox)GVUsuarios.Rows[e.RowIndex].FindControl("ChkEditDisponible");
-            bool Disponibilidad = ChkAux.Checked;
+                BllUsuarios.ActualizarUsuario(int.Parse(UsuarioId), Nombre, Correo, Telefono, Direccion, UrlFoto);
 
-            BllUsuarios.ActualizarUsuario(int.Parse(UsuarioId), Nombre, Correo, Telefono, Direccion, UrlFotos);
+                GVUsuarios.EditIndex = -1;
+                RefrescaGrid();
+                //UtilControls.SweetBox("Registro actualizado", "", "success", this.Page, this.GetType());
+                Response.Write("<script>alert('Fallo')</script>");
+            }
 
-            GVUsuarios.EditIndex = -1;
-            RefrescaGrid();
-            //UtilControls.SweetBox("Registro actualizado", "", "success", this.Page, this.GetType());
-            Response.Write("<script>alert('Fallo')</script>");
+            catch (Exception ex)
+            {
+                //UtilControls.SweetBox("Error", ex.Message, "danger", this.Page, this.GetType());
+                Response.Write("<script>alert('Fallo')</script>");
+            }
         }
-
         protected void GVUsuarios_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GVUsuarios.EditIndex = -1;

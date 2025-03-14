@@ -47,16 +47,16 @@ namespace CapaDatos
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // Insertar Producto
-        public static void InsertarProducto(string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto,  int paramCategoriaId)
+        public static void InsertarProducto(string Nombre, string Descripcion, decimal Precio, string UrlFoto,  int CategoriaId)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("InsertarProducto",
-                    "@Nombre", paramNombre,
-                    "@Descripcion", paramDescripcion,
-                    "@Precio", paramPrecio,
-                    "@UrlFoto", paramUrlFoto,
-                    "@CategoriaId", paramCategoriaId);
+                    "@Nombre", Nombre,
+                    "@Descripcion", Descripcion,
+                    "@Precio", Precio,
+                    "@UrlFoto", UrlFoto,
+                    "@CategoriaId", CategoriaId);
             }
             catch (Exception ex)
             {
@@ -65,17 +65,17 @@ namespace CapaDatos
         }
 
         // Actualizar Productos
-        public static void ActualizarProducto(int paramProductoIds, string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto, int paramCategoriaId)
+        public static void ActualizarProducto(int ProductoIds, string Nombre, string Descripcion, decimal Precio, string UrlFoto, int CategoriaId)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarProducto",
-                    "@Id", paramProductoIds,
-                    "@Nombre", paramNombre,
-                    "@Descripcion", paramDescripcion,
-                    "@Precio", paramPrecio,
-                    "@UrlFoto", paramUrlFoto,
-                    "@CategoriaId", paramCategoriaId);
+                    "@Id", ProductoIds,
+                    "@Nombre", Nombre,
+                    "@Descripcion", Descripcion,
+                    "@Precio", Precio,
+                    "@UrlFoto", UrlFoto,
+                    "@CategoriaId", CategoriaId);
             }
             catch (Exception ex)
             {
@@ -84,11 +84,11 @@ namespace CapaDatos
         }
 
         // Eliminar Producto
-        public static void EliminarProducto(int paramProductoId)
+        public static void EliminarProducto(int ProductoId)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarProducto", "@Id", paramProductoId);
+                MetodoDatos.ExecuteNonQuery("EliminarProducto", "@Id", ProductoId);
             }
             catch (Exception ex)
             {
@@ -97,11 +97,11 @@ namespace CapaDatos
         }
 
         // Obtener Producto por ID
-        public static ProductosVO GetProductoById(int paramProductoId)
+        public static ProductosVO GetProductoById(int ProductoId)
         {
             try
             {
-                DataSet dsProducto = MetodoDatos.ExecuteDataSet("ObtenerProductoPorId", "@Id", paramProductoId);
+                DataSet dsProducto = MetodoDatos.ExecuteDataSet("ObtenerProductoPorId", "@Id", ProductoId);
                 if (dsProducto.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsProducto.Tables[0].Rows[0];

@@ -26,11 +26,11 @@ namespace CapaNegocios
         }
 
         //Insertar
-        public static void InsertarProducto(string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto, int paramCategoriaId)
+        public static void InsertarProducto(string Nombre, string Descripcion, decimal Precio, string UrlFoto, int CategoriaId)
         {
             try
             {
-                DalProductos.InsertarProducto(paramNombre, paramDescripcion, paramPrecio, paramUrlFoto,  paramCategoriaId);
+                DalProductos.InsertarProducto(Nombre, Descripcion, Precio, UrlFoto,  CategoriaId);
             }
             catch (Exception ex)
             {
@@ -39,20 +39,20 @@ namespace CapaNegocios
         }
 
         //Actualizar 
-        public static void ActualizarProducto(int paramProductoIds, string paramNombre, string paramDescripcion, decimal paramPrecio, string paramUrlFoto, int paramCategoriaId)
+        public static void ActualizarProducto(int ProductoIds, string Nombre, string Descripcion, decimal Precio, string UrlFoto, int CategoriaId)
         {
-            DalProductos.ActualizarProducto(paramProductoIds, paramNombre, paramDescripcion, paramPrecio, paramUrlFoto, paramCategoriaId);
+            DalProductos.ActualizarProducto(ProductoIds, Nombre, Descripcion, Precio, UrlFoto, CategoriaId);
         }
 
         //Elminar
-        public static string EliminarProducto(int paramProductoId)
+        public static string EliminarProducto(int ProductoId)
         {
             try
             {
-                ProductosVO Producto = DalProductos.GetProductoById(paramProductoId);
+                ProductosVO Producto = DalProductos.GetProductoById(ProductoId);
                 if (Producto != null && Producto.Id > 0)  // Verifica si existe antes de eliminar
                 {
-                    DalProductos.EliminarProducto(paramProductoId);
+                    DalProductos.EliminarProducto(ProductoId);
                     return "1";  // Eliminación exitosa
                 }
                 else
@@ -67,9 +67,9 @@ namespace CapaNegocios
         }
 
         // Obtener por ID
-        public static ProductosVO GetProductoById(int paramProductoId)
+        public static ProductosVO GetProductoById(int ProductoId)
         {
-            return DalProductos.GetProductoById(paramProductoId);
+            return DalProductos.GetProductoById(ProductoId);
         }
     }
 }

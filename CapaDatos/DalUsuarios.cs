@@ -32,16 +32,16 @@ namespace CapaDatos
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // Insertar usuario
-        public static void InsertarUsuario(string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, string paramUrlFoto)
+        public static void InsertarUsuario(string Nombre, string Correo, string Telefono, string Direccion, string UrlFoto)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("InsertarUsuario",
-                    "@Nombre", paramNombre,
-                    "@Correo", paramCorreo,
-                    "@Telefono", paramTelefono,
-                    "@Direccion", paramDireccion,
-                    "@UrlFoto", paramUrlFoto);
+                    "@Nombre", Nombre,
+                    "@Correo", Correo,
+                    "@Telefono", Telefono,
+                    "@Direccion", Direccion,
+                    "@UrlFoto", UrlFoto);
             }
             catch (Exception ex)
             {
@@ -50,17 +50,17 @@ namespace CapaDatos
         }
 
         // Actualizar usuario
-        public static void ActualizarUsuario(int paramUsuarioId, string paramNombre, string paramCorreo, string paramTelefono, string paramDireccion, string paramUrlFoto)
+        public static void ActualizarUsuario(int UsuarioId, string Nombre, string Correo, string Telefono, string Direccion, string UrlFoto)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarUsuario",
-                    "@Id", paramUsuarioId,
-                    "@Nombre", paramNombre,
-                    "@Correo", paramCorreo,
-                    "@Telefono", paramTelefono,
-                    "@Direccion", paramDireccion,
-                    "@UrlFoto", paramUrlFoto);
+                    "@Id", UsuarioId,
+                    "@Nombre", Nombre,
+                    "@Correo", Correo,
+                    "@Telefono", Telefono,
+                    "@Direccion", Direccion,
+                    "@UrlFoto", UrlFoto);
             }
             catch (Exception ex)
             {
@@ -69,11 +69,11 @@ namespace CapaDatos
         }
 
         // Eliminar usuario
-        public static void EliminarUsuario(int paramUsuarioId)
+        public static void EliminarUsuario(int UsuarioId)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarUsuario", "@Id", paramUsuarioId);
+                MetodoDatos.ExecuteNonQuery("EliminarUsuario", "@Id", UsuarioId);
             }
             catch (Exception ex)
             {
@@ -82,11 +82,11 @@ namespace CapaDatos
         }
 
         // Obtener usuario por ID
-        public static UsuariosVO GetUsuarioById(int paramUsuarioId)
+        public static UsuariosVO GetUsuarioById(int UsuarioId)
         {
             try
             {
-                DataSet dsUsuario = MetodoDatos.ExecuteDataSet("ObtenerUsuarioPorId", "@Id", paramUsuarioId);
+                DataSet dsUsuario = MetodoDatos.ExecuteDataSet("ObtenerUsuarioPorId", "@Id", UsuarioId);
                 if (dsUsuario.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsUsuario.Tables[0].Rows[0];

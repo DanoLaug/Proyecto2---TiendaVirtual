@@ -32,15 +32,15 @@ namespace CapaDatos
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // Insertar DetallePedido
-        public static void InsertarDetallePedido(string paramPedidoId, string paramProductoId, decimal paramCantidad, int paramPrecioUnitario)
+        public static void InsertarDetallePedido(string PedidoId, string ProductoId, decimal Cantidad, int PrecioUnitario)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("InsertarDetallePedido",
-                    "@PedidoId", paramPedidoId,
-                    "@ProductoId", paramProductoId,
-                    "@Cantidad", paramCantidad,
-                    "@PrecioUnitario", paramPrecioUnitario);
+                    "@PedidoId", PedidoId,
+                    "@ProductoId", ProductoId,
+                    "@Cantidad", Cantidad,
+                    "@PrecioUnitario", PrecioUnitario);
             }
             catch (Exception ex)
             {
@@ -49,16 +49,16 @@ namespace CapaDatos
         }
 
         // Actualizar DetallePedido
-        public static void ActualizarDetallePedido(int paramDetallePedidoIds, string paramPedidoId, string paramProductoId, decimal paramCantidad, int paramPrecioUnitario)
+        public static void ActualizarDetallePedido(int DetallePedidoIds, string PedidoId, string ProductoId, decimal Cantidad, int PrecioUnitario)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarDetallePedido",
-                    "@Id", paramDetallePedidoIds,
-                    "@PedidoId", paramPedidoId,
-                    "@ProductoId", paramProductoId,
-                    "@Cantidad", paramCantidad,
-                    "@PrecioUnitario", paramPrecioUnitario);
+                    "@Id", DetallePedidoIds,
+                    "@PedidoId", PedidoId,
+                    "@ProductoId", ProductoId,
+                    "@Cantidad", Cantidad,
+                    "@PrecioUnitario", PrecioUnitario);
             }
             catch (Exception ex)
             {
@@ -67,11 +67,11 @@ namespace CapaDatos
         }
 
         // Eliminar DetallePedido
-        public static void EliminarDetallePedido(int paramDetallePedidoIds)
+        public static void EliminarDetallePedido(int DetallePedidoIds)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarDetallePedido", "@Id", paramDetallePedidoIds);
+                MetodoDatos.ExecuteNonQuery("EliminarDetallePedido", "@Id", DetallePedidoIds);
             }
             catch (Exception ex)
             {
@@ -80,11 +80,11 @@ namespace CapaDatos
         }
 
         // Obtener DetallePedido por ID
-        public static DetallePedidosVO GetDetallePedidoById(int paramDetallePedidoIds)
+        public static DetallePedidosVO GetDetallePedidoById(int DetallePedidoIds)
         {
             try
             {
-                DataSet dsDetallePedido = MetodoDatos.ExecuteDataSet("ObtenerDetallePedidoPorId", "@Id", paramDetallePedidoIds);
+                DataSet dsDetallePedido = MetodoDatos.ExecuteDataSet("ObtenerDetallePedidoPorId", "@Id", DetallePedidoIds);
                 if (dsDetallePedido.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsDetallePedido.Tables[0].Rows[0];

@@ -32,15 +32,15 @@ namespace CapaDatos
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // Insertar Pedido
-        public static void InsertarPedido(string paramUsuarioId, DateTime paramFecha, decimal paramTotal, string paramUrlFoto)
+        public static void InsertarPedido(string UsuarioId, DateTime Fecha, decimal Total, string UrlFoto)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("InsertarPedido",
-                    "@UsuarioId", paramUsuarioId,
-                    "@Fecha", paramFecha,
-                    "@Total", paramTotal,
-                    "@UrlFoto", paramUrlFoto);
+                    "@UsuarioId", UsuarioId,
+                    "@Fecha", Fecha,
+                    "@Total", Total,
+                    "@UrlFoto", UrlFoto);
             }
             catch (Exception ex)
             {
@@ -49,16 +49,16 @@ namespace CapaDatos
         }
 
         // Actualizar Pedido
-        public static void ActualizarPedido(int paramPedidoId, string paramUsuarioId, DateTime paramFecha, decimal paramTotal, string paramUrlFoto)
+        public static void ActualizarPedido(int PedidoId, string UsuarioId, DateTime Fecha, decimal Total, string UrlFoto)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarUsuarios",
-                    "@Id", paramPedidoId,
-                    "@UsuarioId", paramUsuarioId,
-                    "@Fecha", paramFecha,
-                    "@Total", paramTotal,
-                    "@UrlFoto", paramUrlFoto);
+                    "@Id", PedidoId,
+                    "@UsuarioId", UsuarioId,
+                    "@Fecha", Fecha,
+                    "@Total", Total,
+                    "@UrlFoto", UrlFoto);
             }
             catch (Exception ex)
             {
@@ -67,11 +67,11 @@ namespace CapaDatos
         }
 
         // Eliminar Pedido
-        public static void EliminarPedido(int paramPedidoId)
+        public static void EliminarPedido(int PedidoId)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarPedido", "@Id", paramPedidoId);
+                MetodoDatos.ExecuteNonQuery("EliminarPedido", "@Id", PedidoId);
             }
             catch (Exception ex)
             {
@@ -80,11 +80,11 @@ namespace CapaDatos
         }
 
         // Obtener Pedido por ID
-        public static PedidosVO GetPedidoById(int paramPedidoId)
+        public static PedidosVO GetPedidoById(int PedidoId)
         {
             try
             {
-                DataSet dsPedido = MetodoDatos.ExecuteDataSet("ObtenerPedidoPorId", "@Id", paramPedidoId);
+                DataSet dsPedido = MetodoDatos.ExecuteDataSet("ObtenerPedidoPorId", "@Id", PedidoId);
                 if (dsPedido.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsPedido.Tables[0].Rows[0];

@@ -17,11 +17,11 @@ namespace CapaNegocios
         }
 
         //Insertar
-        public static void InsertarCategoria(string paramNombre)
+        public static void InsertarCategoria(string Nombre)
         {
             try
             {
-                DalCategorias.InsertarCategoria(paramNombre);
+                DalCategorias.InsertarCategoria(Nombre);
             }
             catch (Exception ex)
             {
@@ -30,20 +30,20 @@ namespace CapaNegocios
         }
 
         //Actualizar 
-        public static void ActualizarCategoria(int paramCategoriaId, string paramNombre)
+        public static void ActualizarCategoria(int CategoriaId, string Nombre)
         {
-            DalCategorias.ActualizarCategoria(paramCategoriaId, paramNombre);
+            DalCategorias.ActualizarCategoria(CategoriaId, Nombre);
         }
 
         //Elminar
-        public static string EliminarCategoria(int paramCategoriaId)
+        public static string EliminarCategoria(int CategoriaId)
         {
             try
             {
-                CategoriasVO Categoria = DalCategorias.GetCategoriaById(paramCategoriaId);
+                CategoriasVO Categoria = DalCategorias.GetCategoriaById(CategoriaId);
                 if (Categoria != null && Categoria.Id > 0)  // Verifica si existe antes de eliminar
                 {
-                    DalCategorias.EliminarCategoria(paramCategoriaId);
+                    DalCategorias.EliminarCategoria(CategoriaId);
                     return "1";  // Eliminación exitosa
                 }
                 else
@@ -58,9 +58,9 @@ namespace CapaNegocios
         }
 
         // Obtener por ID
-        public static CategoriasVO GetCategoriaById(int paramCategoriaId)
+        public static CategoriasVO GetCategoriaById(int CategoriaId)
         {
-            return DalCategorias.GetCategoriaById(paramCategoriaId);
+            return DalCategorias.GetCategoriaById(CategoriaId);
         }
     }
 }

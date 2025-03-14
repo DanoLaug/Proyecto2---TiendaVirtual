@@ -10,41 +10,34 @@ using VO;
 
 namespace TiendaVirtual.Catalogo.Usuarios
 {
-	public partial class EditarUsuario : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class EditarUsuario : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (!IsPostBack)
             {
-                // Obtener el ID del QueryString
-                if (Request.QueryString["Id"] == null)
+                // Validar el ID antes de hacer la conversión
+                if (string.IsNullOrEmpty(Request.QueryString["Id"]) || !int.TryParse(Request.QueryString["Id"], out int usuarioId))
                 {
                     Response.Redirect("ListarUsuarios.aspx");
+                    return;
                 }
-                
-                else
-                {
-                    // Obtener el ID del Usuario
-                    int UsuarioId = int.Parse(Request.QueryString["Id"]);
-                    UsuariosVO Usuario = BllUsuarios.GetUsuarioById(UsuarioId);
 
-                    // Validar que el usuario es correcto
-                    if (Usuario.Id == UsuarioId)
-                    {
-                        // Desplegar la información del usuario
-                        this.lblUsuarioId.Text = UsuarioId.ToString();
-                        this.txtNombre.Text = Usuario.Nombre;
-                        this.txtCorreo.Text = Usuario.Correo;
-                        this.txtTelefono.Text = Usuario.Telefono;
-                        this.txtDireccion.Text = Usuario.Direccion;
-                        this.imgFotoUsuario.ImageUrl = Usuario.UrlFoto;
-                        this.UrlFoto.Text = Usuario.UrlFoto;
-                    }
-                    else
-                    {
-                        Response.Redirect("Catalogo/Usuarios/ListarUsuarios.aspx");
-                    }
+                // Obtener el usuario
+                UsuariosVO usuario = BllUsuarios.GetUsuarioById(usuarioId);
+                if (usuario == null)
+                {
+                    Response.Redirect("ListarUsuarios.aspx");
+                    return;
                 }
+
+                // Mostrar información del usuario
+                lblUsuarioId.Text = usuarioId.ToString();
+                txtNombre.Text = usuario.Nombre;
+                txtCorreo.Text = usuario.Correo;
+                txtTelefono.Text = usuario.Telefono;
+                txtDireccion.Text = usuario.Direccion;
+                UrlFoto.Text = usuario.UrlFoto;
             }
         }
 
@@ -52,64 +45,63 @@ namespace TiendaVirtual.Catalogo.Usuarios
         {
             try
             {
-                int id = int.Parse(lblIdUsuario.Text);
-                string nombre = txtNombre.Text;
-                string correo = txtCorreo.Text;
-                string telefono = txtTelefono.Text;
-                string direccion = txtDireccion.Text;
-                string UrlFoto = this.UrlFoto.Text;
+                int id = int.Parse(lblUsuarioId.Text);
+                string Nombre = txtNombre.Text;
+                string Correo = txtCorreo.Text;
+                string Telefono = txtTelefono.Text;
+                string Direccion = txtDireccion.Text;
+                string UrlFoto = UrlFoto.Text;
 
-                // Llamar a la capa de negocio para actualizar el usuario
-                BllUsuarios.ActualizarUsuario(id, nombre, correo, telefono, direccion, fechaNacimiento, urlFoto, disponibilidad);
+                // Variables agregadas (ajústalas si hay controles específicos para obtener estos valores)
+                DateTime fechaNacimiento = DateTime.Now; // Ajustar si se tiene un control DatePicker
+                bool disponibilidad = true; // Ajustar si se tiene un control CheckBox
+
+                // Actualizar usuario en la base de datos
+                BllUsuarios.ActualizarUsuario(id, Nombre, Correo, Telefono, Direccion, UrlFoto);
 
                 // Mostrar mensaje de éxito
-                //UtilControls.SweetBoxConfirm("Éxito!", "Usuario editado exitosamente", "success", "ListaUsuarios.aspx", this.Page, this.GetType());
-                Response.Write("<script>alert('Exito')</script>");
+                Response.Write("<script>alert('Usuario actualizado correctamente')</script>");
             }
             catch (Exception ex)
             {
-                // Mostrar mensaje de error
-                //UtilControls.SweetBox("Error!", ex.Message, "error", this.Page, this.GetType());
-                Response.Write("<script>alert('Fallo')</script>");
+                Response.Write($"<script>alert('Error: {ex.Message}')</script>");
             }
         }
 
         protected void btnSubeImagen_Click(object sender, EventArgs e)
         {
-            // Validar que el usuario haya seleccionado un archivo
-            if (SubeImagen.Value != "")
+            if (SubeImagen.HasFile) // Corregido uso de HasFile en lugar de Value
             {
-                // Obtener el nombre del archivo
-                string FileName = Path.GetFileName(SubeImagen.PostedFile.FileName);
-                string FileExt = Path.GetExtension(FileName).ToLower();
+                string fileName = Path.GetFileName(SubeImagen.PostedFile.FileName);
+                string fileExt = Path.GetExtension(fileName).ToLower();
 
-                // Validar que el archivo sea .jpg, .png o .jfif
-                if ((FileExt != ".jpg") && (FileExt != ".png") && (FileExt != ".jfif"))
+                // Validar extensiones permitidas
+                if (fileExt != ".jpg" && fileExt != ".png" && fileExt != ".jfif")
                 {
-                    //UtilControls.SweetBox("Error!", "Seleccione un archivo válido (jpg, png, jfif)", "error", this.Page, this.GetType());
-                    Response.Write("<script>alert('Fallo')</script>");
+                    Response.Write("<script>alert('Seleccione un archivo válido (jpg, png, jfif)')</script>");
+                    return;
                 }
-                else
-                {
-                    // Verificar que el directorio exista
-                    string pathDir = Server.MapPath("~/Imagenes/Usuarios/");
-                    if (!Directory.Exists(pathDir))
-                    {
-                        Directory.CreateDirectory(pathDir);
-                    }
 
-                    // Guardar la imagen en el directorio
-                    SubeImagen.PostedFile.SaveAs(pathDir + FileName);
-                    string urlFoto = "/Imagenes/Usuarios/" + FileName;
-                    this.urlFoto.Text = urlFoto;
-                    imgFotoUsuario.ImageUrl = urlFoto;
-                    btnGuardar.Visible = true;
+                // Verificar y crear directorio si no existe
+                string pathDir = Server.MapPath("~/Imagenes/Usuarios/");
+                if (!Directory.Exists(pathDir))
+                {
+                    Directory.CreateDirectory(pathDir);
                 }
+
+                // Guardar la imagen en el servidor
+                string filePath = Path.Combine(pathDir, fileName);
+                SubeImagen.PostedFile.SaveAs(filePath);
+
+                // Actualizar la URL en el formulario
+                string urlFoto = "/Imagenes/Usuarios/" + fileName;
+                UrlFoto.Text = urlFoto;
+                imgFotoUsuario.ImageUrl = urlFoto;
+                btnGuardar.Visible = true;
             }
             else
             {
-                //UtilControls.SweetBox("Error!", "Seleccione un archivo válido", "error", this.Page, this.GetType());
-                Response.Write("<script>alert('Fallo')</script>");
+                Response.Write("<script>alert('Seleccione un archivo válido')</script>");
             }
         }
     }

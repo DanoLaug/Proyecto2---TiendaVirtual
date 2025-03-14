@@ -32,11 +32,11 @@ namespace CapaDatos
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // Insertar Categorias
-        public static void InsertarCategoria(string paramNombre)
+        public static void InsertarCategoria(string Nombre)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("InsertarCategoria", "@Nombre", paramNombre);
+                MetodoDatos.ExecuteNonQuery("InsertarCategoria", "@Nombre", Nombre);
             }
             catch (Exception ex)
             {
@@ -45,13 +45,13 @@ namespace CapaDatos
         }
 
         // Actualizar Categorias
-        public static void ActualizarCategoria(int paramCategoriaId, string paramNombre)
+        public static void ActualizarCategoria(int CategoriaId, string Nombre)
         {
             try
             {
                 MetodoDatos.ExecuteNonQuery("ActualizarCategoria",
-                    "@Id", paramCategoriaId,
-                    "@Nombre", paramNombre);
+                    "@Id", CategoriaId,
+                    "@Nombre", Nombre);
             }
             catch (Exception ex)
             {
@@ -60,11 +60,11 @@ namespace CapaDatos
         }
 
         // Eliminar Categorias
-        public static void EliminarCategoria(int paramCategoriaId)
+        public static void EliminarCategoria(int CategoriaId)
         {
             try
             {
-                MetodoDatos.ExecuteNonQuery("EliminarCategoria", "@Id", paramCategoriaId);
+                MetodoDatos.ExecuteNonQuery("EliminarCategoria", "@Id", CategoriaId);
             }
             catch (Exception ex)
             {
@@ -73,11 +73,11 @@ namespace CapaDatos
         }
 
         // Obtener Categoria por ID
-        public static CategoriasVO GetCategoriaById(int paramCategoriaId)
+        public static CategoriasVO GetCategoriaById(int CategoriaId)
         {
             try
             {
-                DataSet dsUsuario = MetodoDatos.ExecuteDataSet("ObtenerCategoriaPorId", "@Id", paramCategoriaId);
+                DataSet dsUsuario = MetodoDatos.ExecuteDataSet("ObtenerCategoriaPorId", "@Id", CategoriaId);
                 if (dsUsuario.Tables[0].Rows.Count > 0)
                 {
                     DataRow dr = dsUsuario.Tables[0].Rows[0];

@@ -70,9 +70,8 @@ namespace TiendaVirtual.Catalogo.Usuarios
                 string Correo = this.txtCorreo.Text;
                 string Direccion = this.txtDireccion.Text;
                 string Telefono = this.txtTelefono.Text;
-                DateTime FechaNacimiento = DateTime.Parse(this.txtFechaNacimiento.Text);
                 string UrlFoto = this.urlFoto.Text;
-                BllUsuarios.InsertarUsuario(Nombre, Correo, Telefono, Direccion, FechaNacimiento, UrlFoto);
+                BllUsuarios.InsertarUsuario(Nombre, Correo, Telefono, Direccion, UrlFoto);
                 //Util.UtilControls.SweetBoxConfirm("Extito!", "Chofer agregado exitosamente", "success",
                 //    "/Catalagos/Usuarios/ListarUsuarios.aspx", this.Page, this.GetType());
                 Response.Write("<script>alert('Fallo')</script>");
