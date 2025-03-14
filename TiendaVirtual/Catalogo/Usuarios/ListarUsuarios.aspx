@@ -32,18 +32,12 @@
                 onclick="location.href = 'AltaUsuarios.aspx'; return false;">Crear Usuario</button>
         </div>
 
-        <asp:Label ID="lblMensaje" runat="server" CssClass="alert" Visible="false"></asp:Label>
         <asp:GridView ID="GVUsuarios"
             runat="server"
             CssClass="table table-bordered table-striped table-condensed"
             AutoGenerateColumns="False"
             DataKeyNames="Id"
-            
-            <%--OnRowDeleting="GVUsuarios_RowDeleting"
-            OnRowCommand="GVUsuarios_RowCommand"
-            OnRowEditing="GVUsuarios_RowEditing"
-            OnRowUpdating="GVUsuarios_RowUpdating"
-            OnRowCancelingEdit="GVUsuarios_RowCancelingEdit">--%>
+            >
             
             <Columns>
                 <asp:ButtonField 
