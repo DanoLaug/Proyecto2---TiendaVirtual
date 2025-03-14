@@ -37,6 +37,8 @@
             CssClass="table table-bordered table-striped table-condensed"
             AutoGenerateColumns="False"
             DataKeyNames="Id"
+            
+            OnRowDeleting="GVUsuarios_RowDeleting"
             >
             
             <Columns>
