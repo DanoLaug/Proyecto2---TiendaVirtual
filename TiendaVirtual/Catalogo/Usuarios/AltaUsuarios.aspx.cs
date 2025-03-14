@@ -74,7 +74,7 @@ namespace TiendaVirtual.Catalogo.Usuarios
                 BllUsuarios.InsertarUsuario(Nombre, Correo, Telefono, Direccion, UrlFoto);
                 //Util.UtilControls.SweetBoxConfirm("Extito!", "Chofer agregado exitosamente", "success",
                 //    "/Catalagos/Usuarios/ListarUsuarios.aspx", this.Page, this.GetType());
-                Response.Write("<script>alert('Fallo')</script>");
+                Response.Write("<script>alert('Exito')</script>");
 
             }
             catch (Exception ex)
